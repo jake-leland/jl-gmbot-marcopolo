@@ -4,11 +4,11 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /Howdy/i;
+      botRegex = /Marco/i;
 
-  if(request.sender_type != "bot" && botRegex.test(request.text)) {
+  if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage(request);
+    postMessage();
     this.res.end();
   } else {
     console.log("don't care");
@@ -17,10 +17,10 @@ function respond() {
   }
 }
 
-function postMessage(request) {
+function postMessage() {
   var botResponse, options, body, botReq;
 
-  botResponse = JSON.stringify(request);
+  botResponse = "Polo";
 
   options = {
     hostname: 'api.groupme.com',
